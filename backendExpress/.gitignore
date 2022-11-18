@@ -1,4 +1,4 @@
-# Archivo de configuracion para ignorar la carga de documentos no necesarios a nuestro repositorio remoto
+# Archivo de configuracion para ignorar la carga de documentos no necesarios a nuestro repositorio remoto, se utiliza la convencion de gitignore.io
 
 ### Linux ###
 *~
