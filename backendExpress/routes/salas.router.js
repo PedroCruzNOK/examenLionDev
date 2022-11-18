@@ -1,11 +1,15 @@
 //importacion de dependencias
 const express = require('express');
+const SalaService = require('../services/sala.service');
+
 const router = express.Router();
+const service = new SalaService();
 
 //end point para obtener listado de salas
-router.get('/',(req,res,next)=> {
+router.get('/',async(req,res,next)=> {
   try {
-    console.log ('get salas ');
+    const users=await service.find();
+    res.json(users);
   } catch (error)
   { next(error);
   }

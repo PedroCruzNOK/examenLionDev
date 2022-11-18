@@ -1,11 +1,18 @@
+//importamos los modelos de nuestra estructura del orm
+const { models }= require('../libs/sequelize');
 
 class SalaService{
+  constructor() {
+
+  }
+
   create (){
 
   }
 
-  find (){
-
+  async find (){
+    const rta = await models.Sala.findAll();
+    return rta;
   }
 
   findOne(){

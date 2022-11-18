@@ -74,4 +74,4 @@ class Sala extends Model{
 }
 
 //se exporta el schema  y la clase para su uso
-module.exports = {SalaSchema, Sala};
+module.exports = {SALA_TABLE, SalaSchema, Sala};
