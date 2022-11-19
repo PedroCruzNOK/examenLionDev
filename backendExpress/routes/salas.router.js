@@ -31,13 +31,20 @@ router.get('/:id',
 );
 
 //end point para crear una nueva sala
-router.post('/',(req,res,next)=> {
-  try {
-    console.log ('post salas ');
-  } catch (error)
-  { next(error);
+router.post('/', 'body',
+  async(req,res,next)=>{
+    try{
+      const body= req.body;
+      const newSala = await service.create(body);
+
+      res.status(201).json(newSala);
+    }
+    catch(error){
+      next(error);
+
+    }
   }
-});
+);
 
 //end point para editar una sala
 router.patch('/:id',(req,res,next)=> {
