@@ -30,8 +30,10 @@ class SalaService{
     return rta;
   }
 
-  delete(){
-
+  async delete(id){
+    const sala = await this.findOne(id);
+    await sala.destroy();
+    return sala;
   }
 }
 

@@ -61,12 +61,16 @@ router.patch('/:id',
 );
 
 //end point para eliminar una sala por id
-router.delete('/:id',(req,res,next)=> {
-  try {
-    console.log ('delete salas ');
-  } catch (error)
-  { next(error);
+router.delete('/:id',
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      await service.delete(id);
+      res.status(201).json({id});
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 module.exports = router;
