@@ -2,6 +2,7 @@
 const express = require('express');
 const cors = require ('cors');
 const routerApi = require('./routes');
+const {logErrors, errorHandler, boomErrorHandler} = require('./midlewares/error.handler')
 
 const app = express();
 const port = 5000;
@@ -16,6 +17,11 @@ app.get('/', (req, res) => {
 })
 
 routerApi(app);
+
+//midlewares para cachar los errores
+app.use(logErrors);
+app.use(boomErrorHandler);
+app.use(errorHandler);
 
 //Escucha de nuestro servidor, se manda puerto
 app.listen(port, () => {

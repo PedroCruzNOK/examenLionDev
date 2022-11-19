@@ -1,6 +1,8 @@
 //importacion de dependencias
 const express = require('express');
 const SalaService = require('../services/sala.service');
+const  validatorHandler = require('../midlewares/validator.handlre');
+const{getSalaSchema, updateSalaSchema,createSalaSchema}=require('../schemas/sala.schema');
 
 const router = express.Router();
 const service = new SalaService();
@@ -18,7 +20,7 @@ router.get('/',async(req,res,next)=>{
   }});
 
 //end point para obtener una sala especifica
-router.get('/:id',
+router.get('/:id',validatorHandler(getSalaSchema, 'params'),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -31,7 +33,7 @@ router.get('/:id',
 );
 
 //end point para crear una nueva sala
-router.post('/', 'body',
+router.post('/', validatorHandler(createSalaSchema, 'body'),
   async(req,res,next)=>{
     try{
       const body= req.body;
@@ -48,6 +50,8 @@ router.post('/', 'body',
 
 //end point para editar una sala
 router.patch('/:id',
+  validatorHandler(getSalaSchema, 'params'),
+  validatorHandler(updateSalaSchema, 'body'),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -61,7 +65,7 @@ router.patch('/:id',
 );
 
 //end point para eliminar una sala por id
-router.delete('/:id',
+router.delete('/:id',validatorHandler(getSalaSchema, 'params'),
   async (req, res, next) => {
     try {
       const { id } = req.params;
