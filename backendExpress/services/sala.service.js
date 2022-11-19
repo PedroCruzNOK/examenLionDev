@@ -7,8 +7,8 @@ class SalaService{
   }
 
   async create (data){
-    const newUser = await models.User.create(data);
-    return newUser;
+    const newSala = await models.Sala.create(data);
+    return newSala;
   }
 
   async find (){
@@ -24,8 +24,10 @@ class SalaService{
         return sala;
   }
 
-  update(){
-
+  async update(id, changes){
+    const sala = await this.findOne(id);
+    const rta= await sala.update(changes);
+    return rta;
   }
 
   delete(){

@@ -47,13 +47,18 @@ router.post('/', 'body',
 );
 
 //end point para editar una sala
-router.patch('/:id',(req,res,next)=> {
-  try {
-    console.log ('update salas ');
-  } catch (error)
-  { next(error);
+router.patch('/:id',
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const body = req.body;
+      const sala = await service.update(id, body);
+      res.json(sala);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 //end point para eliminar una sala por id
 router.delete('/:id',(req,res,next)=> {
