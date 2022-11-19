@@ -15,8 +15,12 @@ class SalaService{
     return rta;
   }
 
-  findOne(){
-
+  async findOne(id){
+    const sala = await models.Sala.findByPk(id);
+        if(!sala){
+          console.log('error findone')
+        }
+        return sala;
   }
 
   update(){

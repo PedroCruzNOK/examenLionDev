@@ -6,23 +6,29 @@ const router = express.Router();
 const service = new SalaService();
 
 //end point para obtener listado de salas
-router.get('/',async(req,res,next)=> {
-  try {
-    const users=await service.find();
-    res.json(users);
-  } catch (error)
-  { next(error);
+router.get('/',async(req,res,next)=>{
+  try{
+    const salas=await service.find();
+    res.json(salas);
   }
-});
+  catch(error)
+  {
+    next(error);
+
+  }});
 
 //end point para obtener una sala especifica
-router.get('/:id',(req,res,next)=> {
-  try {
-    console.log ('get id salas ');
-  } catch (error)
-  { next(error);
+router.get('/:id',
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const sala = await service.findOne(id);
+      res.json(sala);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 //end point para crear una nueva sala
 router.post('/',(req,res,next)=> {
