@@ -1,5 +1,5 @@
-
-<div class="container">
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="container-fluid">
   <br>
   <div class="title">
     <h4>Listado de Salas</h4>
@@ -27,7 +27,7 @@
         <td>{{item.sala}}</td>
         <td>{{item.descripcion}}</td>
         <td>{{item.ubicacion}}</td>
-        <td>{{item.capacidad}}</td>
+        <td>{{item.capacidad}} Personas.</td>
         <td>{{item.identificador}}</td>
         <td>{{item.estado}}</td>
         <td>{{item.fechainicial}}</td>
@@ -35,7 +35,7 @@
         <td>{{item.solicitante}}</td>
         <td>
           <button type="button" routerLink = "/editar/{{item.id}}" class="btn btn-info btn-sm">Editar</button>
-          <button type="button" class="btn btn-danger btn-sm ms-2">Delete</button>
+          <button (click)="borrarSala(item.id!)" type="button" class="btn btn-danger btn-sm ms-2">Delete</button>
 
         </td>
       </tr>

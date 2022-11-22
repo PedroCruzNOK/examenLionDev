@@ -1,42 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { Sala } from 'src/app/interfaces/sala';
+import { SalaService } from 'src/app/services/sala.service';
 
 @Component({
   selector: 'app-list-salas',
   templateUrl: './list-salas.component.html',
   styleUrls: ['./list-salas.component.css']
 })
-export class ListSalasComponent {
-  listSalas: Sala[] = [
-    {
-      id: 1,
-      sala: 'sala',
-      descripcion: 'hola',
-      ubicacion: 'ubicacion',
-      capacidad: 25,
-      identificador: 'identi5',
-      estado: 'Disponible',
-      fechainicial: '2022/12/12 10:20:50',
-      fechafinal: '2022/12/12 10:20:50',
-      solicitante: 'juan'
+export class ListSalasComponent implements OnInit{
+  listSalas: Sala[] = []
+  loading: boolean = false;
 
-    },
-    {
-      id: 2,
-      sala: 'sala dos',
-      descripcion: 'hola',
-      ubicacion: 'ubicacion',
-      capacidad: 25,
-      identificador: 'identi5',
-      estado: 'Disponible',
-      fechainicial: '2022/12/12 10:20:50',
-      fechafinal: '2022/12/12 10:20:50',
-      solicitante: 'juan'
+  constructor(private _salaService: SalaService){
 
-    }
-  ]
-
-
-
-
+  }
+  ngOnInit(): void {
+    this.getSalas();
+  }
+  getSalas(){
+    this.loading = true;
+      this._salaService.getSalas().subscribe((data: Sala [])=>{
+        this.listSalas=data;
+        this.loading = false;
+      })
+  }
+  borrarSala(id: number){
+    this.loading = true;
+    this._salaService.borrarSala(id).subscribe(() =>{
+      this.getSalas();
+    })
+  }
 }
