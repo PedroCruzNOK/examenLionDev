@@ -1,1 +1,37 @@
-<p>list-salas works!</p>
+
+<div class="container">
+  <h4>Listado de Salas</h4>
+  <table class="table table-hover table-secondary">
+    <thead>
+      <tr>
+        <th scope="col">SALA</th>
+        <th scope="col">DESCRIPCION</th>
+        <th scope="col">UBICACION</th>
+        <th scope="col">CAPACIDAD</th>
+        <th scope="col">IDENTIFICADOR</th>
+        <th scope="col">ESTADO</th>
+        <th scope="col">FECHA INICIAL</th>
+        <th scope="col">FECHA FINAL</th>
+        <th scope="col">SOLICITANTE</th>
+        <th scope="col">ACCIONES</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let item of listSalas" class = "table-secondary">
+        <td>{{item.sala}}</td>
+        <td></td>
+        <td>{{item.descripcion}}</td>
+        <td>{{item.ubicacion}}</td>
+        <td>{{item.capacidad}}</td>
+        <td>{{item.identificador}}</td>
+        <td>{{item.estado}}</td>
+        <td>{{item.fechainicial}}</td>
+        <td>{{item.fechafinal}}</td>
+        <td>{{item.solicitante}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+

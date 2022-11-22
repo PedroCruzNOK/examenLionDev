@@ -1,14 +1,12 @@
 export interface Sala {
   id?: number;
-  sala: string;
+  sala: String;
   descripcion: string;
   ubicacion: string;
   capacidad: number;
   identificador: string;
   estado: string;
-  fechainicial: Date;
-  fechafinal: Date;
+  fechainicial: string;
+  fechafinal: string;
   solicitante: string;
-
-
 }
