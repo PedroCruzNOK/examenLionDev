@@ -6,7 +6,7 @@
     <button type="button" routerLink= "/agregar" class="btn btn-primary">Agregar Sala</button>
   </div>
   <br>
-  <table class="table table-hover table-secondary">
+  <table *ngIf="listSalas.length > 0" class="table table-hover table-secondary">
     <thead>
       <tr>
         <th scope="col">SALA</th>
@@ -42,5 +42,6 @@
 
     </tbody>
   </table>
+  <h5 *ngIf="listSalas.length == 0">No hay salas que mostrar</h5>
 </div>
 

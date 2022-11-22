@@ -20,4 +20,7 @@ import { Sala } from '../interfaces/sala';
   borrarSala(id:number): Observable<void>{
     return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}${id}`)
   }
+  guardarSala(sala: Sala): Observable<void>{
+    return this.http.post<void>(`${this.myAppUrl}${this.myApiUrl}`,sala)
+  }
 }

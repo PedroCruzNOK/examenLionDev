@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Sala } from 'src/app/interfaces/sala';
 import { SalaService } from 'src/app/services/sala.service';
 
@@ -11,7 +12,7 @@ export class ListSalasComponent implements OnInit{
   listSalas: Sala[] = []
   loading: boolean = false;
 
-  constructor(private _salaService: SalaService){
+  constructor(private _salaService: SalaService, private toastr: ToastrService){
 
   }
   ngOnInit(): void {
@@ -28,6 +29,7 @@ export class ListSalasComponent implements OnInit{
     this.loading = true;
     this._salaService.borrarSala(id).subscribe(() =>{
       this.getSalas();
+      this.toastr.warning('La sala fue eliminada con exito', 'Sala eliminada')
     })
   }
 }
