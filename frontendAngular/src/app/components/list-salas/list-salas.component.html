@@ -3,7 +3,7 @@
   <br>
   <div class="title">
     <h4>Listado de Salas</h4>
-    <button type="button" class="btn btn-primary">Agregar Sala</button>
+    <button type="button" routerLink= "/agregar" class="btn btn-primary">Agregar Sala</button>
   </div>
   <br>
   <table class="table table-hover table-secondary">
@@ -34,7 +34,7 @@
         <td>{{item.fechafinal}}</td>
         <td>{{item.solicitante}}</td>
         <td>
-          <button type="button" class="btn btn-info btn-sm">Edit</button>
+          <button type="button" routerLink = "/editar/{{item.id}}" class="btn btn-info btn-sm">Editar</button>
           <button type="button" class="btn btn-danger btn-sm ms-2">Delete</button>
 
         </td>

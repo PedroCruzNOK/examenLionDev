@@ -9,6 +9,7 @@ const routes: Routes = [
   {path: '', component: ListSalasComponent},
   //agregamos la ruta para agregar una sala
   {path: 'agregar', component: AddEditSalaComponent},
+  {path: 'editar/:id', component: AddEditSalaComponent },
   {path: '**', redirectTo: '', pathMatch:'full' }
 ];
 @NgModule({

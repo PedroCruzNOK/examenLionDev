@@ -9,6 +9,7 @@ import { Sala } from 'src/app/interfaces/sala';
 export class ListSalasComponent {
   listSalas: Sala[] = [
     {
+      id: 1,
       sala: 'sala',
       descripcion: 'hola',
       ubicacion: 'ubicacion',
@@ -21,6 +22,7 @@ export class ListSalasComponent {
 
     },
     {
+      id: 2,
       sala: 'sala dos',
       descripcion: 'hola',
       ubicacion: 'ubicacion',
