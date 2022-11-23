@@ -64,8 +64,8 @@
           <td>{{item.sala}}</td>
           <td>{{item.ubicacion}}</td>
           <td>{{item.capacidad}} Personas.</td>
-          <td>{{item.fechainicial}}</td>
-          <td>{{item.fechafinal}}</td>
+          <td>{{item.fechainicial | date: 'MMM, dd, yyyy, hh:mm:ss'}}</td>
+          <td>{{item.fechafinal  | date: 'MMM, dd, yyyy, hh:mm:ss'}}</td>
           <td>{{item.solicitante}}</td>
           <td>
             <button (click)="liberarSala(item.id!)" type="button" class="btn btn-danger btn-sm ms-2">Liberar</button>

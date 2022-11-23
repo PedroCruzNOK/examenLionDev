@@ -17,10 +17,26 @@ export class ListSalasComponent implements OnInit{
   }
   ngOnInit(): void {
     this.getSalas();
+
   }
   getSalas(){
     this.loading = true;
       this._salaService.getSalas().subscribe((data: Sala [])=>{
+        data.forEach(item => {
+
+          const hoy = new Date();
+          const fecha = hoy.getFullYear()+'-'+(hoy.getMonth()+1)+'-'+hoy.getDate();
+          const hora = hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds();
+          const tiempo = fecha+' '+hora;
+
+
+
+          if(item.fechafinal > tiempo){
+            console.log(tiempo);
+            console.log(item.fechafinal)
+          }
+        });
+
         this.listSalas=data;
         this.loading = false;
       })

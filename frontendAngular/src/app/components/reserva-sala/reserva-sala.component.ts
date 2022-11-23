@@ -78,7 +78,7 @@ export class ReservaSalaComponent implements OnInit {
 
     if (sala.fechafinal < sala.fechainicial) {
       this.toastr.warning(`El dia Final no puede ser menor que el inicial`, 'Eror en fecha Final');
-    } else if (finalHour > initHour || finalMin >  initMin || finalDay > iniDay) {
+    } else if (finalHour > initHour || (finalHour == initHour && finalMin >  initMin) || finalDay > iniDay) {
       this.toastr.warning(`La Sala ${sala.sala} no se pudo reservar ya que la fecha final no debe de exceder las dos horas`, 'sala no se pudo reservar');
     } else {
       this._salaService.update1Sala(this.id, sala).subscribe(() => {
