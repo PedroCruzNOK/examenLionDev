@@ -20,7 +20,16 @@ import { Sala } from '../interfaces/sala';
   borrarSala(id:number): Observable<void>{
     return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}${id}`)
   }
+  liberarSala(id:number, sala:Sala): Observable<void>{
+    return this.http.patch<void>(`${this.myAppUrl}${this.myApiUrl}${id}`, sala)
+  }
   guardarSala(sala: Sala): Observable<void>{
     return this.http.post<void>(`${this.myAppUrl}${this.myApiUrl}`,sala)
+  }
+  getOneSala(id: number): Observable<Sala>{
+    return this.http.get<Sala>(`${this.myAppUrl}${this.myApiUrl}${id}`);
+  }
+  updateSala(id: number, sala: Sala): Observable<void>{
+    return  this.http.patch<void>(`${this.myAppUrl}${this.myApiUrl}${id}`, sala);
   }
 }

@@ -32,4 +32,15 @@ export class ListSalasComponent implements OnInit{
       this.toastr.warning('La sala fue eliminada con exito', 'Sala eliminada')
     })
   }
+  liberarSala(id: number){
+    this.loading = true;
+    const sala: any = {
+      estado: 'DESOCUPADO'
+    }
+    this._salaService.liberarSala(id, sala).subscribe(() =>{
+      this.getSalas();
+      this.toastr.info('La sala fue liberasa', 'Sala liberada')
+    })
+
+  }
 }

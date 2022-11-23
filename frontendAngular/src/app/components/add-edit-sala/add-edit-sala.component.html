@@ -2,7 +2,7 @@
 <div *ngIf="!loading" class="row mt-2">
   <div class="col-lg-4 offset-lg-4">
     <div class="card bg-light mb-3" style="max-width: 25rem;">
-      <div class="card-header text-center">AGREGAR SALA</div>
+      <div class="card-header text-center">{{operacion}} SALA</div>
       <div class="card-body">
         <form [formGroup]= "form" (ngSubmit)="agregarSala()">
           <input formControlName="sala" type="text" class="mt-1 form-control"  placeholder="Nombre de la sala">

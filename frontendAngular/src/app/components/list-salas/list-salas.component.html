@@ -6,6 +6,7 @@
     <button type="button" routerLink= "/agregar" class="btn btn-primary">Agregar Sala</button>
   </div>
   <br>
+  <h5>Disponibles</h5>
   <table *ngIf="listSalas.length > 0" class="table table-hover table-secondary">
     <thead>
       <tr>
@@ -14,34 +15,67 @@
         <th scope="col">UBICACION</th>
         <th scope="col">CAPACIDAD</th>
         <th scope="col">IDENTIFICADOR</th>
-        <th scope="col">ESTADO</th>
-        <th scope="col">FECHA INICIAL</th>
-        <th scope="col">FECHA FINAL</th>
-        <th scope="col">SOLICITANTE</th>
+        <th scope="col">DISPONIBLE</th>
         <th scope="col">ACCIONES</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let item of listSalas"  >
 
-      <tr *ngFor="let item of listSalas" class = "table-secondary">
-        <td>{{item.sala}}</td>
-        <td>{{item.descripcion}}</td>
-        <td>{{item.ubicacion}}</td>
-        <td>{{item.capacidad}} Personas.</td>
-        <td>{{item.identificador}}</td>
-        <td>{{item.estado}}</td>
-        <td>{{item.fechainicial}}</td>
-        <td>{{item.fechafinal}}</td>
-        <td>{{item.solicitante}}</td>
-        <td>
-          <button type="button" routerLink = "/editar/{{item.id}}" class="btn btn-info btn-sm">Editar</button>
-          <button (click)="borrarSala(item.id!)" type="button" class="btn btn-danger btn-sm ms-2">Delete</button>
+      <tr  *ngIf="item.estado ==='DESOCUPADO'" class = "table-secondary">
 
-        </td>
+          <td>{{item.sala}}</td>
+          <td>{{item.descripcion}}</td>
+          <td>{{item.ubicacion}}</td>
+          <td>{{item.capacidad}} Personas.</td>
+          <td>{{item.identificador}}</td>
+          <td>
+            <button type="button" routerLink = "/editar/{{item.id}}" class="btn btn-info btn-sm">RESERVAR</button>
+          </td>
+          <td>
+            <button type="button" routerLink = "/editar/{{item.id}}" class="btn btn-info btn-sm">Editar</button>
+            <button (click)="borrarSala(item.id!)" type="button" class="btn btn-danger btn-sm ms-2">Delete</button>
+
+          </td>
+
+
       </tr>
 
     </tbody>
   </table>
   <h5 *ngIf="listSalas.length == 0">No hay salas que mostrar</h5>
+  <br>
+  <h5>Reservadas</h5>
+  <table class="table table-hover table-secondary">
+    <thead>
+      <tr>
+        <th scope="col">SALA</th>
+        <th scope="col">UBICACION</th>
+        <th scope="col">CAPACIDAD</th>
+        <th scope="col">FECHA INICIAL</th>
+        <th scope="col">FECHA FINAL</th>
+        <th scope="col">SOLICITANTE</th>
+        <th scope="col">DISPONIBLE</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of listSalas"  >
+
+      <tr  *ngIf="item.estado !=='DESOCUPADO'" class = "table-secondary">
+
+          <td>{{item.sala}}</td>
+          <td>{{item.ubicacion}}</td>
+          <td>{{item.capacidad}} Personas.</td>
+          <td>{{item.fechainicial}}</td>
+          <td>{{item.fechafinal}}</td>
+          <td>{{item.solicitante}}</td>
+          <td>
+            <button (click)="liberarSala(item.id!)" type="button" class="btn btn-danger btn-sm ms-2">Liberar</button>
+          </td>
+
+
+      </tr>
+
+    </tbody>
+  </table>
+
 </div>
 
