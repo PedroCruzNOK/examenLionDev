@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddEditSalaComponent } from './components/add-edit-sala/add-edit-sala.component';
 //importamos nuestro componente de listas de salas
 import { ListSalasComponent } from './components/list-salas/list-salas.component';
+import { ReservaSalaComponent } from './components/reserva-sala/reserva-sala.component';
 
 const routes: Routes = [
   //agregamos la ruta para el listado de salas
@@ -10,6 +11,7 @@ const routes: Routes = [
   //agregamos la ruta para agregar una sala
   {path: 'agregar', component: AddEditSalaComponent},
   {path: 'editar/:id', component: AddEditSalaComponent },
+  {path: 'reservar/:id', component: ReservaSalaComponent  },
   {path: '**', redirectTo: '', pathMatch:'full' }
 ];
 @NgModule({

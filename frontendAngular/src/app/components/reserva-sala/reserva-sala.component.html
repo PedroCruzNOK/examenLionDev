@@ -1,0 +1,32 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="row mt-2">
+  <div class="col-lg-4 offset-lg-4" >
+    <div class="card bg-light mb-3" style="max-width: 25rem;">
+      <div class="card-header text-center">RESERVAR SALA</div>
+      <div class="card-body" >
+        <form [formGroup]= "form1" (ngSubmit)="agregar1Sala()">
+          <input formControlName="sala" class="mt-1 form-control">
+          <input formControlName="descripcion" type="text" class="mt-2 form-control">
+          <input formControlName="ubicacion" type="text" class="mt-2 form-control"  >
+          <input formControlName="capacidad" type="number" class="mt-2 form-control"  >
+          <input formControlName="identificador" type="text" class="mt-2 form-control" >
+          <input formControlName="fechainicial" type="datetime-local" class="mt-2 form-control"  placeholder="Fecha Inicail de Reserva">
+          <input formControlName="fechafinal" type="datetime-local" class="mt-2 form-control"  placeholder="Fecha Final de Reserva">
+          <input formControlName="solicitante" type="text" class="mt-2 form-control"  placeholder="Quien Reserva">
+          <div class="row mt-2 text-center">
+            <div routerLink ="/" class="col-lg-6">
+              <button type="button" class="btn btn-secondary">Volver</button>
+            </div>
+            <div  class="col-lg-6">
+              <button [disabled]="form1.invalid" type="submit" class="btn btn-primary">Aceptar</button>
+            </div>
+          </div>
+
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+

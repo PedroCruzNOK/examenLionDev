@@ -39,7 +39,7 @@ export class ListSalasComponent implements OnInit{
     }
     this._salaService.liberarSala(id, sala).subscribe(() =>{
       this.getSalas();
-      this.toastr.info('La sala fue liberasa', 'Sala liberada')
+      this.toastr.info('La sala fue liberada', 'Sala liberada')
     })
 
   }

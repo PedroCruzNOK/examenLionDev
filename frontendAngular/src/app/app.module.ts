@@ -14,6 +14,7 @@ import { ListSalasComponent } from './components/list-salas/list-salas.component
 import { AddEditSalaComponent } from './components/add-edit-sala/add-edit-sala.component';
 import { ProgressBarComponent } from './shared/progress-bar/progress-bar.component';
 import { timeout } from 'rxjs';
+import { ReservaSalaComponent } from './components/reserva-sala/reserva-sala.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { timeout } from 'rxjs';
     NavbarComponent,
     ListSalasComponent,
     AddEditSalaComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    ReservaSalaComponent
   ],
   imports: [
     BrowserModule,

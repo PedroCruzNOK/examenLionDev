@@ -32,4 +32,13 @@ import { Sala } from '../interfaces/sala';
   updateSala(id: number, sala: Sala): Observable<void>{
     return  this.http.patch<void>(`${this.myAppUrl}${this.myApiUrl}${id}`, sala);
   }
+  guardar1Sala(sala: Sala): Observable<void>{
+    return this.http.post<void>(`${this.myAppUrl}${this.myApiUrl}`,sala)
+  }
+  getOne1Sala(id: number): Observable<Sala>{
+    return this.http.get<Sala>(`${this.myAppUrl}${this.myApiUrl}${id}`);
+  }
+  update1Sala(id: number, sala: Sala): Observable<void>{
+    return  this.http.patch<void>(`${this.myAppUrl}${this.myApiUrl}${id}`, sala);
+  }
 }

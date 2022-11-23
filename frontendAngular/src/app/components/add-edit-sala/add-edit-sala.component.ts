@@ -59,16 +59,14 @@ export class AddEditSalaComponent implements OnInit {
   }
 
   agregarSala(){
-    const sala: Sala = {
+    const sala: any = {
       sala: this.form.value.sala,
       descripcion: this.form.value.descripcion,
       ubicacion: this.form.value.ubicacion,
       capacidad: this.form.value.capacidad,
       identificador: this.form.value.identificador,
       estado: 'DESOCUPADO',
-      fechainicial: "2020/12/01 10:28:00",
-      fechafinal: "2020/12/01 10:28:00",
-      solicitante: "null"
+
     }
 
     this.loading = true;
