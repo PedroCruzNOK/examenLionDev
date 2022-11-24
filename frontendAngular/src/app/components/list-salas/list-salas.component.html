@@ -1,13 +1,13 @@
 <app-progress-bar *ngIf="loading"></app-progress-bar>
-<div *ngIf="!loading" class="container-fluid">
+<div *ngIf="!loading" class="conte ">
   <br>
   <div class="title">
     <h4>Listado de Salas</h4>
     <button type="button" routerLink= "/agregar" class="btn btn-primary">Agregar Sala</button>
   </div>
   <br>
-  <h5>Disponibles</h5>
-  <table *ngIf="listSalas.length > 0" class="table table-hover table-secondary">
+  <h5 class="text-center mb-3" style="font-size: 1.5rem;">Salas Disponibles</h5>
+  <table *ngIf="listSalas.length > 0" class="table table-hover table-dark" >
     <thead>
       <tr>
         <th scope="col">SALA</th>
@@ -21,7 +21,7 @@
     </thead>
     <tbody *ngFor="let item of listSalas"  >
 
-      <tr  *ngIf="item.estado ==='DESOCUPADO'" class = "table-secondary">
+      <tr  *ngIf="item.estado ==='DESOCUPADO'" class = "table-light">
 
           <td>{{item.sala}}</td>
           <td>{{item.descripcion}}</td>
@@ -44,8 +44,8 @@
   </table>
   <h5 *ngIf="listSalas.length == 0">No hay salas que mostrar</h5>
   <br>
-  <h5>Reservadas</h5>
-  <table class="table table-hover table-secondary">
+  <h5 class="text-center mb-3 " style="font-size: 1.5rem;">Salas Reservadas</h5>
+  <table class="table table-hover table-dark">
     <thead>
       <tr>
         <th scope="col">SALA</th>
@@ -59,14 +59,14 @@
     </thead>
     <tbody *ngFor="let item of listSalas"  >
 
-      <tr  *ngIf="item.estado !=='DESOCUPADO'" class = "table-secondary">
+      <tr  *ngIf="item.estado !=='DESOCUPADO'" class = "table-light">
 
           <td>{{item.sala}}</td>
           <td>{{item.ubicacion}}</td>
           <td>{{item.capacidad}} Personas.</td>
           <td>{{item.fechainicial | date: 'MMM, dd, yyyy, hh:mm:ss'}}</td>
           <td>{{item.fechafinal  | date: 'MMM, dd, yyyy, hh:mm:ss'}}</td>
-          <td>{{item.solicitante}}</td>
+          <td ><span style="color: rgb(61, 139, 68); font-size: large; font-weight: 600;">{{item.solicitante}}</span></td>
           <td>
             <button (click)="liberarSala(item.id!)" type="button" class="btn btn-danger btn-sm ms-2">Liberar</button>
           </td>

@@ -1,18 +1,23 @@
 <app-progress-bar *ngIf="loading"></app-progress-bar>
 <div *ngIf="!loading" class="row mt-2">
   <div class="col-lg-4 offset-lg-4">
-    <div class="card bg-light mb-3" style="max-width: 25rem;">
-      <div class="card-header text-center">{{operacion}} SALA</div>
+    <div class="card bg-light mb-3" style="max-width: 35rem;">
+      <div class="card-header text-center" style="font-size: 1.5rem;">{{operacion}} SALA</div>
       <div class="card-body">
         <form [formGroup]= "form" (ngSubmit)="agregarSala()">
+          <label class="form-label mt-2" for="readOnlyInput">Nombre</label>
           <input formControlName="sala" type="text" class="mt-1 form-control"  placeholder="Nombre de la sala">
           <small *ngIf="form.get('sala')?.hasError('required') && form.get('sala')?.touched" class="form-text text-muted">Nombre es obligatorio.</small>
+          <label class="form-label mt-2" for="readOnlyInput">Descripcion</label>
           <input formControlName="descripcion" type="text" class="mt-2 form-control"  placeholder="Descripcion de la sala">
           <small  *ngIf="form.get('descripcion')?.hasError('required') && form.get('descripcion')?.touched" class="form-text text-muted">Minimo 8 caracteres.</small>
+          <label class="form-label mt-2" for="readOnlyInput">Ubicacion</label>
           <input formControlName="ubicacion" type="text" class="mt-2 form-control"  placeholder="Ubicacion de la sala">
           <small  *ngIf="form.get('ubicacion')?.hasError('required')&& form.get('ubicacion')?.touched" class="form-text text-muted">Ubicacion es obligatorio.</small>
+          <label class="form-label mt-2" for="readOnlyInput">Capacidad</label>
           <input formControlName="capacidad" type="number" class="mt-2 form-control"  placeholder="Capacidad de la sala">
           <small  *ngIf="form.get('capacidad')?.hasError('required')&& form.get('capacidad')?.touched" class="form-text text-muted">Capacidad es obligatorio.</small>
+          <label class="form-label mt-2" for="readOnlyInput">Identificador de sala</label>
           <input formControlName="identificador" type="text" class="mt-2 form-control"  placeholder="Identificador de la sala">
           <small  *ngIf="form.get('identificador')?.hasError('required')&& form.get('identificador')?.touched" class="form-text text-muted">identificador obligatorio.</small>
           <div class="row mt-2 text-center">

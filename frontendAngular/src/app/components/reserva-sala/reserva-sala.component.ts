@@ -68,19 +68,22 @@ export class ReservaSalaComponent implements OnInit {
 
     const initHour = new Date(sala.fechainicial).getHours() + 2;
     const finalHour = new Date(sala.fechafinal).getHours();
-
     const initMin = new Date(sala.fechainicial).getMinutes();
     const finalMin = new Date(sala.fechafinal).getMinutes();
-
-    const iniDay = new Date(sala.fechainicial).getDay();
-    const finalDay = new Date(sala.fechainicial).getDay();
-
-
-    if (sala.fechafinal < sala.fechainicial) {
+    const iniDay = new Date(sala.fechainicial).getDate();
+    const finalDay = new Date(sala.fechafinal).getDate();
+    const hoy = new Date();
+    const dia = hoy.getDate();
+    if(iniDay < dia ){
+      this.toastr.warning(`El dia inicial no puede ser menos a erl dia presente`, 'Eror en fecha Inicial');
+    }else if (sala.fechafinal < sala.fechainicial) {
       this.toastr.warning(`El dia Final no puede ser menor que el inicial`, 'Eror en fecha Final');
-    } else if (finalHour > initHour || (finalHour == initHour && finalMin >  initMin) || finalDay > iniDay) {
+    } else if ( finalDay > iniDay){
+      this.toastr.warning(`el dia Final no puede ser mayor al inicial`, 'Dias no corresponden');
+    }else if(finalHour > initHour || (finalHour === initHour && finalMin >  initMin)) {
       this.toastr.warning(`La Sala ${sala.sala} no se pudo reservar ya que la fecha final no debe de exceder las dos horas`, 'sala no se pudo reservar');
-    } else {
+    }
+    else {
       this._salaService.update1Sala(this.id, sala).subscribe(() => {
         this.toastr.success(
           `La Sala ${sala.sala} fue reservada de forma correcta`,

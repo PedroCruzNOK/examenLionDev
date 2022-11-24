@@ -1,18 +1,35 @@
 <app-progress-bar *ngIf="loading"></app-progress-bar>
 <div *ngIf="!loading" class="row mt-2">
   <div class="col-lg-4 offset-lg-4" >
-    <div class="card bg-light mb-3" style="max-width: 25rem;">
-      <div class="card-header text-center">RESERVAR SALA</div>
+    <div class="card bg-light mb-3" style="max-width: 35rem;">
+      <div class="card-header text-center"style="font-size: 1.5rem;">RESERVAR SALA</div>
       <div class="card-body" >
         <form [formGroup]= "form1" (ngSubmit)="agregar1Sala()">
-          <input formControlName="sala" class="mt-1 form-control">
+          <div class="row">
+            <div class="col-lg-6">
+              <label class="form-label mt-1" for="readOnlyInput">Nombre de la sala</label>
+              <input formControlName="sala" class="mt-1 form-control">
+              <label class="form-label mt-1" for="readOnlyInput">Ubicacion</label>
+              <input formControlName="ubicacion" type="text" class="mt-2 form-control"  >
+
+            </div>
+            <div class="col-lg-6">
+              <label class="form-label mt-2" for="readOnlyInput">Identificador de la sala</label>
+              <input formControlName="identificador" type="text" class="mt-2 form-control" >
+              <label class="form-label mt-2" for="readOnlyInput">Capacidad</label>
+              <input formControlName="capacidad" type="number" class="mt-2 form-control"  >
+            </div>
+          </div>
+          <label class="form-label mt-2" for="readOnlyInput">Descripcion</label>
           <input formControlName="descripcion" type="text" class="mt-2 form-control">
-          <input formControlName="ubicacion" type="text" class="mt-2 form-control"  >
-          <input formControlName="capacidad" type="number" class="mt-2 form-control"  >
-          <input formControlName="identificador" type="text" class="mt-2 form-control" >
-          <input formControlName="fechainicial" type="datetime-local" class="mt-2 form-control"  placeholder="Fecha Inicail de Reserva">
-          <input formControlName="fechafinal" type="datetime-local" class="mt-2 form-control"  placeholder="Fecha Final de Reserva">
-          <input formControlName="solicitante" type="text" class="mt-2 form-control"  placeholder="Quien Reserva">
+
+          <hr>
+          <label class="form-label mt-4" for="readOnlyInput">Fecha inicial de reserva</label>
+          <input formControlName="fechainicial" type="datetime-local" class="mt-1 form-control"  placeholder="Fecha Inicail de Reserva">
+          <label class="form-label mt-4" for="readOnlyInput">Fecha Final de reserva (no mayor a 2Hr.)</label>
+          <input formControlName="fechafinal" type="datetime-local" class="mt-1 form-control"  placeholder="Fecha Final de Reserva">
+          <label class="form-label mt-4" for="readOnlyInput">Solicitante</label>
+          <input formControlName="solicitante" type="text" class="mt-1 form-control"  placeholder="Quien Reserva">
           <div class="row mt-2 text-center">
             <div routerLink ="/" class="col-lg-6">
               <button type="button" class="btn btn-secondary">Volver</button>

@@ -1,5 +1,9 @@
 .title {
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
+}
+.conte{
+  margin-left: 7rem;
+  margin-right: 7rem;
 }

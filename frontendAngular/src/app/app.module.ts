@@ -33,7 +33,6 @@ import { ReservaSalaComponent } from './components/reserva-sala/reserva-sala.com
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 10000,
-      positionClass: 'toast-bottom.right',
       preventDuplicates: true,
     }
 

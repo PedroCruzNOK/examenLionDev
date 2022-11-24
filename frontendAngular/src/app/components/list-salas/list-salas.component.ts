@@ -25,15 +25,10 @@ export class ListSalasComponent implements OnInit{
         data.forEach(item => {
 
           const hoy = new Date();
-          const fecha = hoy.getFullYear()+'-'+(hoy.getMonth()+1)+'-'+hoy.getDate();
-          const hora = hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds();
-          const tiempo = fecha+' '+hora;
+          const testDate = new Date(item.fechafinal);
 
-
-
-          if(item.fechafinal > tiempo){
-            console.log(tiempo);
-            console.log(item.fechafinal)
+          if(testDate < hoy){
+            this.liberarSala(item.id);
           }
         });
 
@@ -51,11 +46,14 @@ export class ListSalasComponent implements OnInit{
   liberarSala(id: number){
     this.loading = true;
     const sala: any = {
-      estado: 'DESOCUPADO'
+      estado: 'DESOCUPADO',
+      fechainicial: '2025/12/12 12:00:00',
+      fechafinal: '2025/12/12 12:00:00',
+      solicitante: 'null'
     }
     this._salaService.liberarSala(id, sala).subscribe(() =>{
       this.getSalas();
-      this.toastr.info('La sala fue liberada', 'Sala liberada')
+      this.toastr.info(`La sala fue liberada`, 'Sala liberada')
     })
 
   }

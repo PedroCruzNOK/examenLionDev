@@ -1,5 +1,5 @@
 export interface Sala {
-  id?: number;
+  id: number;
   sala: String;
   descripcion: string;
   ubicacion: string;
