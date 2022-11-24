@@ -1,0 +1,23 @@
+****Instrucciones para la base de datos*****
+
+la aplicacdion funciona con PostgreSQL, y al llenar el archivo .env que se encuentra en la raiz del backend
+como el archivo .env.example ya generara las tablas y los campos necesarios para funcionar, solo se debe de crear 
+el archivo .env con los valores correctos de su postgres y crear la base de datos con el nombre  salas_de_juntas 
+como el siguiente script de ejemplo:
+
+-- Database: salas_de_juntas
+
+-- DROP DATABASE IF EXISTS salas_de_juntas;
+
+CREATE DATABASE salas_de_juntas
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Spanish_Mexico.1252'
+    LC_CTYPE = 'Spanish_Mexico.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+    
+    despues de eso solo se ejecurara npm run dev y el backend generara la tabla y los atributos siempre
+    y cuando los parametros de conexion sean correctos.
